@@ -1,0 +1,10 @@
+class Main {
+    function void main() {
+        var Pacman pacman, pacman2;
+
+        let pacman = Pacman.new();
+        let pacman2 = Pacman.new();
+
+        return;
+    }
+}

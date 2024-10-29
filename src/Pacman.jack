@@ -1,0 +1,17 @@
+class Pacman {
+    field int x, y, size;
+    field int direction; /** 0 = right, 1 = up, 2 = left, 3 = down */
+    field int speed;
+    field boolean captured;
+
+    constructor Pacman new() {
+        let x = 165;
+        let y = 165;
+        let size = 12;
+        let direction = 1;
+        let speed = 1;
+        let captured = false;
+
+        return this;
+    }
+}

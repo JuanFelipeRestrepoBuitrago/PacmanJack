@@ -1,0 +1,9 @@
+# IDE fiels
+.vscode/
+
+# Build files
+bin/
+build/
+
+# VM files
+*.vm
