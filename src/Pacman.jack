@@ -5,7 +5,7 @@ class Pacman {
     field boolean captured;
 
     constructor Pacman new() {
-        let x = 165;
+        let x = 156;
         let y = 165;
         let size = 12;
         let direction = 1;
@@ -13,5 +13,106 @@ class Pacman {
         let captured = false;
 
         return this;
+    }
+
+    method void draw() {
+        var int radius;
+        let radius = Math.divide(size, 2);
+
+        do Screen.setColor(true);
+
+        do Screen.drawCircle(x, y, radius);
+
+        do Screen.setColor(false);
+
+        do Output.printString("Direction: ");
+        do Output.printInt(direction);
+
+        // Draw mouth based on direction
+        if (direction = 0) { // Right
+            do Screen.drawRectangle(x + 1, y - 4, x + 2, y - 3);
+            do Screen.drawRectangle(x + 2, y, x + 3, y + 1);
+            do Screen.drawRectangle(x + 3, y - 1, x + 4, y + 2);
+            do Screen.drawRectangle(x + 4, y - 2, x + 6, y + 3);
+        } 
+        if (direction = 1) { // Up
+            do Screen.drawRectangle(x - 3, y - 1, x - 2, y);
+            do Screen.drawRectangle(x, y - 3, x + 1, y - 2);
+            do Screen.drawRectangle(x - 1, y - 4, x + 2, y - 3);
+            do Screen.drawRectangle(x - 2, y - 6, x + 3, y - 4);
+        } 
+        if (direction = 2) { // Left
+            do Screen.drawRectangle(x - 1, y - 4, x, y - 3);
+            do Screen.drawRectangle(x - 2, y, x - 1, y + 1);
+            do Screen.drawRectangle(x - 3, y - 1, x - 2, y + 2);
+            do Screen.drawRectangle(x - 6, y - 2, x - 4, y + 3);
+        } 
+        if (direction = 3) { // Down
+            do Screen.drawRectangle(x + 2, y, x + 3, y + 1);
+            do Screen.drawRectangle(x, y + 2, x + 1, y + 3);
+            do Screen.drawRectangle(x - 1, y + 3, x + 2, y + 4);
+            do Screen.drawRectangle(x - 2, y + 4, x + 3, y + 6);
+        }
+        // do Screen.drawRectangle(x + 1, y - 4, x + 2, y - 3);
+        // do Screen.drawRectangle(x + 2, y, x + 3, y + 1);
+        // do Screen.drawRectangle(x + 3, y - 1, x + 4, y + 2);
+        // do Screen.drawRectangle(x + 4, y - 2, x + 6, y + 3);
+
+        return;
+    }
+
+    // Getters and setters
+    method void setX(int newX) {
+        let x = newX;
+        return;
+    }
+
+    method void setY(int newY) {
+        let y = newY;
+        return;
+    }
+
+    method void setSize(int newSize) {
+        let size = newSize;
+        return;
+    }
+
+    method void setDirection(int newDirection) {
+        let direction = newDirection;
+        return;
+    }
+
+    method void setSpeed(int newSpeed) {
+        let speed = newSpeed;
+        return;
+    }
+
+    method void setCaptured(boolean newCaptured) {
+        let captured = newCaptured;
+        return;
+    }
+
+    method int getX() {
+        return x;
+    }
+
+    method int getY() {
+        return y;
+    }
+
+    method int getSize() {
+        return size;
+    }
+
+    method int getDirection() {
+        return direction;
+    }
+
+    method int getSpeed() {
+        return speed;
+    }
+
+    method boolean getCaptured() {
+        return captured;
     }
 }

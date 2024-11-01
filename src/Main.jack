@@ -4,7 +4,12 @@ class Main {
 
         let pacman = Pacman.new();
         let pacman2 = Pacman.new();
+        do pacman2.setX(pacman2.getX() + 40);
+        do pacman2.setDirection(3);
 
+        do pacman.draw();
+        do pacman2.draw();
+    
         return;
     }
 }
