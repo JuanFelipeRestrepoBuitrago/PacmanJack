@@ -5,10 +5,10 @@ class Pacman {
     field boolean captured, mouthClosed;
 
     constructor Pacman new() {
-        let x = 0;
-        let y = 0;
+        let x = 1;
+        let y = 160;
         let size = 12;
-        let direction = 0;
+        let direction = 2;
         let speed = 3;
         let captured = false;
         let mouthClosed = false;
@@ -19,7 +19,8 @@ class Pacman {
     method void draw() {
         var int radius;
         
-        let radius = Math.divide(size, 2);
+        // let radius = Math.divide(size, 2);
+        let radius = 5;
 
         do Screen.setColor(true);
 
@@ -137,11 +138,11 @@ class Pacman {
             let nextX = x - speed;
         }
 
-        if (nextX < 0) {
+        if (nextX < 1) {
             let nextX = 496;
         }
         if (nextX > 496) {
-            let nextX = 0;
+            let nextX = 1;
         }
 
         return nextX;
@@ -157,6 +158,12 @@ class Pacman {
             let nextY = y + speed;
         }
 
+        if (nextY < 1) {
+            let nextY = 240;
+        }
+        if (nextY > 240) {
+            let nextY = 1;
+        }
         return nextY;
     }
 
