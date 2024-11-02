@@ -4,26 +4,20 @@ class Main {
         var int key;
 
         let pacman = Pacman.new();
-        let pacman2 = Pacman.new();
-        do pacman2.setX(200);
 
         do pacman.init();
-        do pacman2.init();
-
-        do pacman2.erase();
 
         while (true) {
-            // do pacman.next();
+            do pacman.move();
             // check for keyboard input
             let key = Keyboard.keyPressed();
             // if a key is pressed, handle key
             if (~(key = 0)) {
                 do pacman.handleKey(key);
-                do pacman.erase();
-                do pacman.draw();
             }
         }
-    
+
+        do pacman.dispose();
         return;
     }
 }

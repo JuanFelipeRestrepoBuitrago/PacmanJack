@@ -2,21 +2,23 @@ class Pacman {
     field int x, y, size;
     field int direction; /** 0 = right, 1 = up, 2 = left, 3 = down */
     field int speed;
-    field boolean captured;
+    field boolean captured, mouthClosed;
 
     constructor Pacman new() {
-        let x = 156;
-        let y = 165;
+        let x = 0;
+        let y = 0;
         let size = 12;
-        let direction = 1;
-        let speed = 1;
+        let direction = 0;
+        let speed = 3;
         let captured = false;
+        let mouthClosed = false;
 
         return this;
     }
 
     method void draw() {
         var int radius;
+        
         let radius = Math.divide(size, 2);
 
         do Screen.setColor(true);
@@ -25,30 +27,42 @@ class Pacman {
 
         do Screen.setColor(false);
 
-        // Draw mouth based on direction
+        // Draw eyes
         if (direction = 0) { // Right
             do Screen.drawRectangle(x + radius + 1, y + radius - 4, x + radius + 2, y + radius - 3);
-            do Screen.drawRectangle(x + radius + 2, y + radius, x + radius + 3, y + radius + 1);
-            do Screen.drawRectangle(x + radius + 3, y + radius - 1, x + radius + 4, y + radius + 2);
-            do Screen.drawRectangle(x + radius + 4, y + radius - 2, x + radius + 6, y + radius + 3);
-        } 
+        }
         if (direction = 1) { // Up
             do Screen.drawRectangle(x + radius - 3, y + radius - 1, x + radius - 2, y + radius);
-            do Screen.drawRectangle(x + radius, y + radius - 3, x + radius + 1, y + radius - 2);
-            do Screen.drawRectangle(x + radius - 1, y + radius - 4, x + radius + 2, y + radius - 3);
-            do Screen.drawRectangle(x + radius - 2, y + radius - 6, x + radius + 3, y + radius - 4);
-        } 
+        }
         if (direction = 2) { // Left
             do Screen.drawRectangle(x + radius - 1, y + radius - 4, x + radius, y + radius - 3);
-            do Screen.drawRectangle(x + radius - 2, y + radius, x + radius - 1, y + radius + 1);
-            do Screen.drawRectangle(x + radius - 3, y + radius - 1, x + radius - 2, y + radius + 2);
-            do Screen.drawRectangle(x + radius - 6, y + radius - 2, x + radius - 4, y + radius + 3);
         } 
         if (direction = 3) { // Down
             do Screen.drawRectangle(x + radius + 2, y + radius, x + radius + 3, y + radius + 1);
-            do Screen.drawRectangle(x + radius, y + radius + 2, x + radius + 1, y + radius + 3);
-            do Screen.drawRectangle(x + radius - 1, y + radius + 3, x + radius + 2, y + radius + 4);
-            do Screen.drawRectangle(x + radius - 2, y + radius + 4, x + radius + 3, y + radius + 6);
+        }
+
+        // Draw mouth based on direction
+        if (~mouthClosed) {
+            if (direction = 0) { // Right
+                do Screen.drawRectangle(x + radius + 2, y + radius, x + radius + 3, y + radius + 1);
+                do Screen.drawRectangle(x + radius + 3, y + radius - 1, x + radius + 4, y + radius + 2);
+                do Screen.drawRectangle(x + radius + 4, y + radius - 2, x + radius + 6, y + radius + 3);
+            } 
+            if (direction = 1) { // Up            
+                do Screen.drawRectangle(x + radius, y + radius - 3, x + radius + 1, y + radius - 2);
+                do Screen.drawRectangle(x + radius - 1, y + radius - 4, x + radius + 2, y + radius - 3);
+                do Screen.drawRectangle(x + radius - 2, y + radius - 6, x + radius + 3, y + radius - 4);
+            } 
+            if (direction = 2) { // Left
+                do Screen.drawRectangle(x + radius - 2, y + radius, x + radius - 1, y + radius + 1);
+                do Screen.drawRectangle(x + radius - 3, y + radius - 1, x + radius - 2, y + radius + 2);
+                do Screen.drawRectangle(x + radius - 6, y + radius - 2, x + radius - 4, y + radius + 3);
+            } 
+            if (direction = 3) { // Down
+                do Screen.drawRectangle(x + radius, y + radius + 2, x + radius + 1, y + radius + 3);
+                do Screen.drawRectangle(x + radius - 1, y + radius + 3, x + radius + 2, y + radius + 4);
+                do Screen.drawRectangle(x + radius - 2, y + radius + 4, x + radius + 3, y + radius + 6);
+            }
         }
 
         return;
@@ -57,7 +71,18 @@ class Pacman {
     method void erase() {
         do Screen.setColor(false);
 
-        do Screen.drawRectangle(x, y, x + size, y + size);
+        if (direction = 0) {
+            do Screen.drawRectangle(x - speed, y, x + size - speed, y + size);
+        }
+        if (direction = 1) {
+            do Screen.drawRectangle(x, y + speed, x + size, y + size + speed);
+        }
+        if (direction = 2) {
+            do Screen.drawRectangle(x + speed, y, x + size + speed, y + size);
+        }
+        if (direction = 3) {
+            do Screen.drawRectangle(x, y - speed, x + size, y + size - speed);
+        }
 
         return;
     }
@@ -93,9 +118,60 @@ class Pacman {
         return;
     }
 
-    // method void move(){
-        
-    // }
+    method void move(){
+        var boolean canMove;
+        let canMove = true;
+        if (canMove) {
+            let x = getNextX();
+            let y = getNextY();
+
+            // if (x > 512 - 12) {
+            //     let x = 0;
+            // } 
+            // if (x < 0) {
+            //     let x = 512 - 12;
+            // }
+            // if (y > 256 - 12) {
+            //     let y = 0;
+            // }
+            // if (y < 0) {
+            //     let y = 256 - 12;
+            // }
+
+            do erase();
+            do draw();
+            do toggleMouth();
+            do Sys.wait(1000);
+        }
+
+        return;
+    }
+
+    method int getNextX(){
+        var int nextX;
+        let nextX = x;
+        if (direction = 0) {
+            let nextX = x + speed;
+        }
+        if (direction = 2) {
+            let nextX = x - speed;
+        }
+
+        return nextX;
+    }
+
+    method int getNextY(){
+        var int nextY;
+        let nextY = y;
+        if (direction = 1) {
+            let nextY = y - speed;
+        }
+        if (direction = 3) {
+            let nextY = y + speed;
+        }
+
+        return nextY;
+    }
 
     // Getters and setters
     method void setX(int newX) {
@@ -150,6 +226,11 @@ class Pacman {
 
     method boolean getCaptured() {
         return captured;
+    }
+
+    method void toggleMouth() {
+        let mouthClosed = ~mouthClosed;
+        return;
     }
 
     method void dispose(){
