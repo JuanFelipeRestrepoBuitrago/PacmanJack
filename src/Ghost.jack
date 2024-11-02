@@ -169,7 +169,7 @@ class Ghost {
      do Screen.drawRectangle(x, y, endX(), endY()); // Clear previous position
      return;
    }
- 
+
    method void draw() {
      do Screen.setColor(true);
  
