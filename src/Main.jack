@@ -1,9 +1,33 @@
 class Main {
     function void main() {
-        var Pacman pacman, pacman2;
+        // var Pacman pacman, pacman2;
+        // var int key;
 
-        let pacman = Pacman.new();
-        let pacman2 = Pacman.new();
+        // let pacman = Pacman.new();
+
+        // do pacman.init();
+
+        // while (true) {
+        //     do pacman.move();
+        //     // check for keyboard input
+        //     let key = Keyboard.keyPressed();
+        //     // if a key is pressed, handle key
+        //     if (~(key = 0)) {
+        //         do pacman.handleKey(key);
+        //     }
+        // }
+
+        // do pacman.dispose();
+
+        var Score score;
+
+        let score = Score.new();
+
+        do score.init();
+
+        do Sys.wait(1000);
+
+        do score.calculate();
 
         return;
     }
