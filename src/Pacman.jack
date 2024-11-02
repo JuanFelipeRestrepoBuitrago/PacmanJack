@@ -71,18 +71,7 @@ class Pacman {
     method void erase() {
         do Screen.setColor(false);
 
-        if (direction = 0) {
-            do Screen.drawRectangle(x - speed, y, x + size - speed, y + size);
-        }
-        if (direction = 1) {
-            do Screen.drawRectangle(x, y + speed, x + size, y + size + speed);
-        }
-        if (direction = 2) {
-            do Screen.drawRectangle(x + speed, y, x + size + speed, y + size);
-        }
-        if (direction = 3) {
-            do Screen.drawRectangle(x, y - speed, x + size, y + size - speed);
-        }
+        do Screen.drawRectangle(x, y, x + size, y + size);
 
         return;
     }
@@ -120,28 +109,19 @@ class Pacman {
 
     method void move(){
         var boolean canMove;
+        var int newX, newY;
+    
         let canMove = true;
+
         if (canMove) {
+            do erase();
+
             let x = getNextX();
             let y = getNextY();
 
-            // if (x > 512 - 12) {
-            //     let x = 0;
-            // } 
-            // if (x < 0) {
-            //     let x = 512 - 12;
-            // }
-            // if (y > 256 - 12) {
-            //     let y = 0;
-            // }
-            // if (y < 0) {
-            //     let y = 256 - 12;
-            // }
-
-            do erase();
             do draw();
             do toggleMouth();
-            do Sys.wait(1000);
+            do Sys.wait(250);
         }
 
         return;
@@ -155,6 +135,13 @@ class Pacman {
         }
         if (direction = 2) {
             let nextX = x - speed;
+        }
+
+        if (nextX < 0) {
+            let nextX = 496;
+        }
+        if (nextX > 496) {
+            let nextX = 0;
         }
 
         return nextX;
