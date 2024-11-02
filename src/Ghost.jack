@@ -1,0 +1,202 @@
+class Ghost {
+   // current position
+   field int x, y;
+   // size
+   field int size;
+   // direction 1=up, 2=down, 3=left, 4=right
+   field int dir;
+   // number of pixels to move at a time
+   field int speed;
+   // reference to walls collection
+   field Walls walls;
+   // reference to pac-man
+   field PacMan pacman;
+   // reference to pellets collection
+   field Pellets pellets;
+ 
+   constructor Ghost new(int xi, int yi, PacMan pm, Walls w, Pellets p) {
+     let size = 12;
+     let speed = 2;
+     let x = xi; // starting x
+     let y = yi; // starting y
+     let dir = 3; // start going left
+     let pacman = pm;
+     let walls = w;
+     let pellets = p;
+     return this;
+   }
+ 
+   method int endX() {
+     return x + size - 1;
+   }
+ 
+   method int endY() {
+     return y + size - 1;
+   }
+ 
+   method void init() {
+     do draw();
+     return;
+   }
+ 
+   // advance and draw ghost, check if capturing pacman
+   method void next() {
+     var boolean didMove;
+     
+     // Clear the current position of the ghost to prevent any trails
+     do clear();
+ 
+     // Attempt to move the ghost
+     let didMove = advance();
+     
+     // Draw the ghost at the new position if it moved
+     do draw();
+ 
+     // Check if the ghost captures Pac-Man
+     if (pacman.checkOverlapping(x, y, endX(), endY())) {
+       do pacman.capture();
+     }
+     return;
+   }
+ 
+   // move ghost, turn if will hit wall
+   method boolean advance() {
+     var int nextX, nextY;
+     let nextX = getNextX();
+     let nextY = getNextY();
+     if (willCollideWithWalls(nextX, nextY)) {
+       do setNextDirRandom();
+       return false;
+     }
+     if ((x = nextX) & (y = nextY)) {
+       return false;
+     }
+     let x = nextX;
+     let y = nextY;
+     return true;
+   }
+ 
+   // check if it will collide with a wall
+   method boolean willCollideWithWalls(int nextX, int nextY) {
+     var int nextEndX, nextEndY;
+     let nextEndX = nextX + size - 1;
+     let nextEndY = nextY + size - 1;
+     return walls.checkOverlapping(nextX, nextY, nextEndX, nextEndY);
+   }
+ 
+   // change direction
+   method void setNextDirAI() {
+     var int pacmanX, pacmanY;
+     var int diffX, diffY;
+     let pacmanX = pacman.getX();
+     let pacmanY = pacman.getY();
+     let diffX = Math.max(x, pacmanX) - Math.min(x, pacmanX);
+     let diffY = Math.max(y, pacmanY) - Math.min(y, pacmanY);
+     if (~(diffX = 0) & (diffX > diffY)) {
+       if (pacmanX < x) {
+         let dir = 3;
+         return;
+       }
+       let dir = 4;
+       return;
+     }
+     if (pacmanY < y) {
+       let dir = 1;
+       return;
+     }
+     let dir = 2;
+     return;
+   }
+   
+   method void setNextDirRandom() {
+     var int i;
+     let i = Random.randRange(150);
+     if (i < 25) {
+       let dir = 1;
+       return;
+     }
+     if (i < 50) {
+       let dir = 2;
+       return;
+     }
+     if (i < 75) {
+       let dir = 3;
+       return;
+     }
+     if (i < 100) {
+       let dir = 4;
+       return;
+     }
+     do setNextDirAI();
+     return;
+   }
+   
+   method int getNextX() {
+     var int nextX;
+     let nextX = x;
+     if (dir = 4) {
+       let nextX = x + speed;
+     }
+     if (dir = 3) {
+       let nextX = x - speed;
+     }
+     return nextX;
+   }
+ 
+   method int getNextY() {
+     var int nextY;
+     let nextY = y;
+     if (dir = 2) {
+       let nextY = y + speed;
+     }
+     if (dir = 1) {
+       let nextY = y - speed;
+     }
+     if (nextY > 220) {
+       let nextY = 12;
+       do clear();
+     }
+     if (nextY < 12) {
+       let nextY = 220;
+       do clear();
+     }
+     return nextY;
+   }
+ 
+   // Clear the current ghost position to avoid trails
+   method void clear() {
+     do Screen.setColor(false); // Set color to erase
+     do Screen.drawRectangle(x, y, endX(), endY()); // Clear previous position
+     return;
+   }
+ 
+   // Draw the ghost to resemble the uploaded image
+   method void draw() {
+     do Screen.setColor(true);
+ 
+     do Screen.drawRectangle(x + 2, y, x + 9, y + 2);
+ 
+     do Screen.drawRectangle(x + 1, y + 3, x + 10, y + 8);
+ 
+     do Screen.setColor(false); 
+     do Screen.drawRectangle(x + 4, y + 4, x + 5, y + 6); 
+     do Screen.drawRectangle(x + 7, y + 4, x + 8, y + 6);
+ 
+     do Screen.setColor(true);
+     do Screen.drawRectangle(x + 4, y + 5, x + 4, y + 5); 
+     do Screen.drawRectangle(x + 7, y + 5, x + 7, y + 5);
+ 
+     do Screen.setColor(true); 
+     do Screen.drawRectangle(x + 1, y + 9, x + 2, y + 10);
+     do Screen.drawRectangle(x + 3, y + 10, x + 4, y + 11);
+     do Screen.drawRectangle(x + 7, y + 10, x + 8, y + 11); 
+     do Screen.drawRectangle(x + 9, y + 9, x + 10, y + 10); 
+ 
+     return;
+   }
+
+   method void dispose() {
+     do Memory.deAlloc(this);
+     return;
+   }
+ }
