@@ -1,0 +1,68 @@
+class Score {
+    // current score
+    field int score;
+    // highest score
+    field int highest;
+    // cookies
+    field Cookies cookies;
+
+    // constructor Score new(Cookies p) {
+    //     let score = 0; // start at 0 points
+    //     let cookies = p;
+    //     return this;
+    // }
+
+    constructor Score new() {
+        let score = 0; // start at 0 points
+        return this;
+    }
+
+    method void init() {
+        // draw score and highestest score
+        do draw();
+        return;
+    }
+
+    method void calculate() {
+        // calculate new score
+        var int newScore;
+        // let newScore = pellets.getCapturedCount() * 10;
+        let newScore = 1 * 10;
+        if (~(newScore = score)) {
+            let score = newScore;
+            // update highest score
+	        if (score > highest) {
+		        let highest = score;
+            }
+        // draw new scores
+        do drawNumbers();
+        }
+        return;
+    }
+
+    method void draw() {
+        do Output.moveCursor(2, 46); // row, col
+        do Output.printString("SCORE");
+        do Output.moveCursor(6, 46); // row, col
+        do Output.printString("HIGHEST");
+        do drawNumbers();
+
+        do Output.moveCursor(20, 46); // row, col
+        do Output.printString("PAC-MAN");
+
+        return;
+    }
+
+    method void drawNumbers() {
+        do Output.moveCursor(3, 46); // row, col
+        do Output.printInt(score);
+	    do Output.moveCursor(7, 46); // row, col
+        do Output.printInt(highest);
+        return;
+    }
+  
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}
