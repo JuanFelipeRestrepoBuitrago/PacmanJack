@@ -21,42 +21,43 @@ class Pacman {
 
         do Screen.setColor(true);
 
-        do Screen.drawCircle(x, y, radius);
+        do Screen.drawCircle(x + radius, y + radius, radius);
 
         do Screen.setColor(false);
 
-        do Output.printString("Direction: ");
-        do Output.printInt(direction);
-
         // Draw mouth based on direction
         if (direction = 0) { // Right
-            do Screen.drawRectangle(x + 1, y - 4, x + 2, y - 3);
-            do Screen.drawRectangle(x + 2, y, x + 3, y + 1);
-            do Screen.drawRectangle(x + 3, y - 1, x + 4, y + 2);
-            do Screen.drawRectangle(x + 4, y - 2, x + 6, y + 3);
+            do Screen.drawRectangle(x + radius + 1, y + radius - 4, x + radius + 2, y + radius - 3);
+            do Screen.drawRectangle(x + radius + 2, y + radius, x + radius + 3, y + radius + 1);
+            do Screen.drawRectangle(x + radius + 3, y + radius - 1, x + radius + 4, y + radius + 2);
+            do Screen.drawRectangle(x + radius + 4, y + radius - 2, x + radius + 6, y + radius + 3);
         } 
         if (direction = 1) { // Up
-            do Screen.drawRectangle(x - 3, y - 1, x - 2, y);
-            do Screen.drawRectangle(x, y - 3, x + 1, y - 2);
-            do Screen.drawRectangle(x - 1, y - 4, x + 2, y - 3);
-            do Screen.drawRectangle(x - 2, y - 6, x + 3, y - 4);
+            do Screen.drawRectangle(x + radius - 3, y + radius - 1, x + radius - 2, y + radius);
+            do Screen.drawRectangle(x + radius, y + radius - 3, x + radius + 1, y + radius - 2);
+            do Screen.drawRectangle(x + radius - 1, y + radius - 4, x + radius + 2, y + radius - 3);
+            do Screen.drawRectangle(x + radius - 2, y + radius - 6, x + radius + 3, y + radius - 4);
         } 
         if (direction = 2) { // Left
-            do Screen.drawRectangle(x - 1, y - 4, x, y - 3);
-            do Screen.drawRectangle(x - 2, y, x - 1, y + 1);
-            do Screen.drawRectangle(x - 3, y - 1, x - 2, y + 2);
-            do Screen.drawRectangle(x - 6, y - 2, x - 4, y + 3);
+            do Screen.drawRectangle(x + radius - 1, y + radius - 4, x + radius, y + radius - 3);
+            do Screen.drawRectangle(x + radius - 2, y + radius, x + radius - 1, y + radius + 1);
+            do Screen.drawRectangle(x + radius - 3, y + radius - 1, x + radius - 2, y + radius + 2);
+            do Screen.drawRectangle(x + radius - 6, y + radius - 2, x + radius - 4, y + radius + 3);
         } 
         if (direction = 3) { // Down
-            do Screen.drawRectangle(x + 2, y, x + 3, y + 1);
-            do Screen.drawRectangle(x, y + 2, x + 1, y + 3);
-            do Screen.drawRectangle(x - 1, y + 3, x + 2, y + 4);
-            do Screen.drawRectangle(x - 2, y + 4, x + 3, y + 6);
+            do Screen.drawRectangle(x + radius + 2, y + radius, x + radius + 3, y + radius + 1);
+            do Screen.drawRectangle(x + radius, y + radius + 2, x + radius + 1, y + radius + 3);
+            do Screen.drawRectangle(x + radius - 1, y + radius + 3, x + radius + 2, y + radius + 4);
+            do Screen.drawRectangle(x + radius - 2, y + radius + 4, x + radius + 3, y + radius + 6);
         }
-        // do Screen.drawRectangle(x + 1, y - 4, x + 2, y - 3);
-        // do Screen.drawRectangle(x + 2, y, x + 3, y + 1);
-        // do Screen.drawRectangle(x + 3, y - 1, x + 4, y + 2);
-        // do Screen.drawRectangle(x + 4, y - 2, x + 6, y + 3);
+
+        return;
+    }
+
+    method void erase() {
+        do Screen.setColor(false);
+
+        do Screen.drawRectangle(x, y, x + size, y + size);
 
         return;
     }
@@ -70,6 +71,31 @@ class Pacman {
         let captured = true;
         return;
     }
+
+    method void handleKey(int key){
+        if (key = 130) {
+            // Left Arrow
+            do setDirection(2);
+        }
+        if (key = 131){
+            // Up Arrow
+            do setDirection(1);
+        }
+        if (key = 132){
+            // Right Arrow
+            do setDirection(0);
+        }
+        if (key = 133){
+            // Down Arrow
+            do setDirection(3); 
+        }
+
+        return;
+    }
+
+    // method void move(){
+        
+    // }
 
     // Getters and setters
     method void setX(int newX) {
