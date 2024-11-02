@@ -170,7 +170,6 @@ class Ghost {
      return;
    }
  
-   // Draw the ghost to resemble the uploaded image
    method void draw() {
      do Screen.setColor(true);
  
