@@ -122,7 +122,7 @@ class Pacman {
 
             do draw();
             do toggleMouth();
-            do Sys.wait(250);
+            do Sys.wait(400);
         }
 
         return;
