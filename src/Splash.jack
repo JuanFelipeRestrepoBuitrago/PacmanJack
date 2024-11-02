@@ -1,0 +1,651 @@
+class Splash {
+    function Splash new() {
+    var Splash splash;
+    let splash = Memory.alloc(1);
+    return splash;
+  }
+function void show() {
+    // print PAC-MAN large letters
+    do Screen.setColor(true);
+
+  // The splash has 12, each one with cubes 9x9
+
+  //Line 1
+
+    //P
+    do Screen.drawRectangle(45, 18, 54, 27);
+    do Screen.drawRectangle(54, 18, 63, 27);
+    do Screen.drawRectangle(63, 18, 72, 27);
+    do Screen.drawRectangle(72, 18, 81, 27);
+    do Screen.drawRectangle(81, 18, 90, 27);
+
+
+
+    // A
+    do Screen.drawRectangle(135, 18, 144, 27);
+    do Screen.drawRectangle(144, 18, 153, 27);
+
+    // C
+    do Screen.drawRectangle(198, 18, 207, 27);
+    do Screen.drawRectangle(207, 18, 216, 27);
+    do Screen.drawRectangle(216, 18, 225, 27);
+
+
+
+
+    // M 1
+    do Screen.drawRectangle(279, 18, 288, 27);
+    do Screen.drawRectangle(288, 18, 297, 27);
+
+    // M 2
+    do Screen.drawRectangle(324, 18, 333, 27);
+    do Screen.drawRectangle(333, 18, 342, 27);
+
+    // A
+    do Screen.drawRectangle(369, 18, 378, 27);
+    do Screen.drawRectangle(378, 18, 387, 27);
+
+    // N 1
+    do Screen.drawRectangle(414, 18, 423, 27);
+    do Screen.drawRectangle(423, 18, 432, 27);
+    
+    // N 2
+    do Screen.drawRectangle(468, 18, 477, 27);
+    do Screen.drawRectangle(477, 18, 486, 27);   
+    
+  //Line 2
+    
+
+    //P
+    do Screen.drawRectangle(45, 27, 54, 36);
+    do Screen.drawRectangle(54, 27, 63, 36);
+    do Screen.drawRectangle(63, 27, 72, 36);
+    do Screen.drawRectangle(72, 27, 81, 36);
+    do Screen.drawRectangle(81, 27, 90, 36);
+    do Screen.drawRectangle(90, 27, 99, 36);
+
+    // A
+    do Screen.drawRectangle(126, 27, 135, 36);
+    do Screen.drawRectangle(135, 27, 144, 36);
+    do Screen.drawRectangle(144, 27, 153, 36);
+    do Screen.drawRectangle(153, 27, 162, 36);
+
+
+    // C
+    do Screen.drawRectangle(189, 27, 198, 36);
+    do Screen.drawRectangle(198, 27, 207, 36);
+    do Screen.drawRectangle(207, 27, 216, 36);
+    do Screen.drawRectangle(216, 27, 225, 36);
+    do Screen.drawRectangle(225, 27, 234, 36);
+
+    
+
+
+ 
+
+
+    //M 1
+    do Screen.drawRectangle(279, 27, 288, 36);
+    do Screen.drawRectangle(288, 27, 297, 36);
+
+    //M 2
+    do Screen.drawRectangle(324, 27, 333, 36);
+    do Screen.drawRectangle(333, 27, 342, 36);
+
+    // A
+    do Screen.drawRectangle(360, 27, 369, 36);
+    do Screen.drawRectangle(369, 27, 378, 36);
+    do Screen.drawRectangle(378, 27, 387, 36);
+    do Screen.drawRectangle(387, 27, 396, 36);
+
+    //N 1
+    do Screen.drawRectangle(414, 27, 423, 36);
+    do Screen.drawRectangle(423, 27, 432, 36);
+
+    // N 2
+    do Screen.drawRectangle(468, 27, 477, 36);
+    do Screen.drawRectangle(477, 27, 486, 36);
+
+  //Line 3
+
+
+    //P 1
+    do Screen.drawRectangle(54, 36, 63, 45);
+    do Screen.drawRectangle(63, 36, 72, 45);
+
+    //P 2
+    do Screen.drawRectangle(99, 36, 108, 45);
+
+
+    // A 1
+    do Screen.drawRectangle(126, 36, 135, 45);
+
+    // A 2
+    do Screen.drawRectangle(153, 36, 162, 45);
+
+    // C 1
+    do Screen.drawRectangle(180, 36, 189, 45);
+    do Screen.drawRectangle(189, 36, 198, 45);
+
+    // C 2
+    do Screen.drawRectangle(225, 36, 234, 45);
+
+
+
+
+    // M 1
+    do Screen.drawRectangle(279, 36, 288, 45);
+    do Screen.drawRectangle(288, 36, 297, 45);
+
+    // M 2
+    do Screen.drawRectangle(324, 36, 333, 45);
+    do Screen.drawRectangle(333, 36, 342, 45);
+
+    // A 1
+    do Screen.drawRectangle(360, 36, 369, 45);
+
+    // A 2
+    do Screen.drawRectangle(387, 36, 396, 45);
+
+    // N 1
+    do Screen.drawRectangle(414, 36, 423, 45);
+    do Screen.drawRectangle(423, 36, 432, 45);
+    do Screen.drawRectangle(432, 36, 441, 45);
+
+    // N 2
+    do Screen.drawRectangle(468, 36, 477, 45);
+    do Screen.drawRectangle(477, 36, 486, 45);
+
+  //Line 4
+    // J
+
+    //P 1
+    do Screen.drawRectangle(54, 45, 63, 54);
+    do Screen.drawRectangle(63, 45, 72, 54);
+
+    // P 2
+    do Screen.drawRectangle(99, 45, 108, 54);    
+
+
+    // A 1
+    do Screen.drawRectangle(117, 45, 126, 54);
+    do Screen.drawRectangle(126, 45, 135, 54);
+
+    // A 2
+    do Screen.drawRectangle(153, 45, 162, 54);
+    do Screen.drawRectangle(162, 45, 171, 54);
+
+    // C
+    do Screen.drawRectangle(180, 45, 189, 54);
+    do Screen.drawRectangle(189, 45, 198, 54);
+
+
+
+    // M 1
+    do Screen.drawRectangle(279, 45, 288, 54);
+    do Screen.drawRectangle(288, 45, 297, 54);
+    do Screen.drawRectangle(297, 45, 306, 54);
+
+    // M 2
+    do Screen.drawRectangle(315, 45, 324, 54);
+    do Screen.drawRectangle(324, 45, 333, 54);
+    do Screen.drawRectangle(333, 45, 342, 54);
+
+    // A 1
+    do Screen.drawRectangle(351, 45, 360, 54);
+    do Screen.drawRectangle(360, 45, 369, 54);
+
+    // A 2
+    do Screen.drawRectangle(387, 45, 396, 54);
+    do Screen.drawRectangle(396, 45, 405, 54);
+
+    // N 1
+    do Screen.drawRectangle(414, 45, 423, 54);
+    do Screen.drawRectangle(423, 45, 432, 54);
+    do Screen.drawRectangle(432, 45, 441, 54);
+    do Screen.drawRectangle(441, 45, 450, 54);
+
+    // N 2
+    do Screen.drawRectangle(468, 45, 477, 54);
+    do Screen.drawRectangle(477, 45, 486, 54);
+
+  //Line 5
+  
+
+    //P 1
+    do Screen.drawRectangle(54, 54, 63, 63);
+    do Screen.drawRectangle(63, 54, 72, 63);
+
+    // P 2
+    do Screen.drawRectangle(99, 54, 108, 63);
+
+
+    // A 1
+    do Screen.drawRectangle(117, 54, 126, 63);
+    do Screen.drawRectangle(126, 54, 135, 63);
+
+    // A 2
+    do Screen.drawRectangle(153, 54, 162, 63);
+    do Screen.drawRectangle(162, 54, 171, 63);
+
+    // C
+    do Screen.drawRectangle(180, 54, 189, 63);
+    do Screen.drawRectangle(189, 54, 198, 63);
+
+
+
+    // Figure
+    do Screen.drawRectangle(252, 54, 261, 63);
+
+    // M
+    do Screen.drawRectangle(279, 54, 288, 63);
+    do Screen.drawRectangle(288, 54, 297, 63);
+    do Screen.drawRectangle(297, 54, 306, 63);
+    do Screen.drawRectangle(306, 54, 315, 63);
+    do Screen.drawRectangle(315, 54, 324, 63);
+    do Screen.drawRectangle(324, 54, 333, 63);
+    do Screen.drawRectangle(333, 54, 342, 63);
+
+    // A 1
+    do Screen.drawRectangle(351, 54, 360, 63);
+    do Screen.drawRectangle(360, 54, 369, 63);
+
+    // A 2
+    do Screen.drawRectangle(387, 54, 396, 63);
+    do Screen.drawRectangle(396, 54, 405, 63);
+
+    // N 1
+    do Screen.drawRectangle(414, 54, 423, 63);
+    do Screen.drawRectangle(423, 54, 432, 63);
+    do Screen.drawRectangle(432, 54, 441, 63);
+    do Screen.drawRectangle(441, 54, 450, 63);
+    do Screen.drawRectangle(450, 54, 459, 63);
+
+    // N 2
+    do Screen.drawRectangle(468, 54, 477, 63);
+    do Screen.drawRectangle(477, 54, 486, 63);
+
+  //Line 6
+    
+
+    //P
+    do Screen.drawRectangle(54, 63, 63, 72);
+    do Screen.drawRectangle(63, 63, 72, 72);
+    do Screen.drawRectangle(72, 63, 81, 72);
+    do Screen.drawRectangle(81, 63, 90, 72);
+    do Screen.drawRectangle(90, 63, 99, 72);
+
+    // A
+    do Screen.drawRectangle(117, 63, 126, 72);
+    do Screen.drawRectangle(126, 63, 135, 72);
+    do Screen.drawRectangle(135, 63, 144, 72);
+    do Screen.drawRectangle(144, 63, 153, 72);
+    do Screen.drawRectangle(153, 63, 162, 72);
+    do Screen.drawRectangle(162, 63, 171, 72);
+
+    // C
+    do Screen.drawRectangle(180, 63, 189, 72);
+    do Screen.drawRectangle(189, 63, 198, 72);
+
+    
+
+
+    // Figure
+    do Screen.drawRectangle(243, 63, 252, 72);
+    do Screen.drawRectangle(252, 63, 261, 72);
+    do Screen.drawRectangle(261, 63, 270, 72);
+
+    // M 1
+    do Screen.drawRectangle(279, 63, 288, 72);
+    do Screen.drawRectangle(288, 63, 297, 72);
+
+    // M 2
+    do Screen.drawRectangle(306, 63, 315, 72);
+
+    // M 3
+    do Screen.drawRectangle(324, 63, 333, 72);
+    do Screen.drawRectangle(333, 63, 342, 72);
+
+    // A
+    do Screen.drawRectangle(351, 63, 360, 72);
+    do Screen.drawRectangle(360, 63, 369, 72);
+    do Screen.drawRectangle(369, 63, 378, 72);
+    do Screen.drawRectangle(378, 63, 387, 72);
+    do Screen.drawRectangle(387, 63, 396, 72);
+    do Screen.drawRectangle(396, 63, 405, 72);
+
+    // N
+    do Screen.drawRectangle(414, 63, 423, 72);
+    do Screen.drawRectangle(423, 63, 432, 72);
+    do Screen.drawRectangle(432, 63, 441, 72);
+    do Screen.drawRectangle(441, 63, 450, 72);
+    do Screen.drawRectangle(450, 63, 459, 72);
+    do Screen.drawRectangle(459, 63, 468, 72);
+    do Screen.drawRectangle(468, 63, 477, 72);
+    do Screen.drawRectangle(477, 63, 486, 72);
+
+  //Line 7
+    
+
+    //P
+    do Screen.drawRectangle(54, 72, 63, 81);
+    do Screen.drawRectangle(63, 72, 72, 81);
+    do Screen.drawRectangle(72, 72, 81, 81);
+    do Screen.drawRectangle(81, 72, 90, 81);
+
+
+    // A    
+    do Screen.drawRectangle(117, 72, 126, 81);
+    do Screen.drawRectangle(126, 72, 135, 81);
+    do Screen.drawRectangle(135, 72, 144, 81);
+    do Screen.drawRectangle(144, 72, 153, 81);
+    do Screen.drawRectangle(153, 72, 162, 81);
+    do Screen.drawRectangle(162, 72, 171, 81);
+
+    // C
+    do Screen.drawRectangle(180, 72, 189, 81);
+    do Screen.drawRectangle(189, 72, 198, 81);
+
+    
+
+
+    // Figure
+    do Screen.drawRectangle(243, 72, 252, 81);
+    do Screen.drawRectangle(252, 72, 261, 81);
+    do Screen.drawRectangle(261, 72, 270, 81);
+
+    // M 1
+    do Screen.drawRectangle(279, 72, 288, 81);
+    do Screen.drawRectangle(288, 72, 297, 81);
+
+    // M 2
+    do Screen.drawRectangle(306, 72, 315, 81);
+
+    // M 3
+    do Screen.drawRectangle(324, 72, 333, 81);
+    do Screen.drawRectangle(333, 72, 342, 81);
+
+    // A
+    do Screen.drawRectangle(351, 72, 360, 81);
+    do Screen.drawRectangle(360, 72, 369, 81);
+    do Screen.drawRectangle(369, 72, 378, 81);
+    do Screen.drawRectangle(378, 72, 387, 81);
+    do Screen.drawRectangle(387, 72, 396, 81);
+    do Screen.drawRectangle(396, 72, 405, 81);
+
+    // N 1
+    do Screen.drawRectangle(414, 72, 423, 81);
+    do Screen.drawRectangle(423, 72, 432, 81);
+
+    // N 2 
+    do Screen.drawRectangle(441, 72, 450, 81);
+    do Screen.drawRectangle(450, 72, 459, 81);
+    do Screen.drawRectangle(459, 72, 468, 81);
+    do Screen.drawRectangle(468, 72, 477, 81);
+    do Screen.drawRectangle(477, 72, 486, 81);
+
+  //Line 8
+    
+
+    //P
+    do Screen.drawRectangle(54, 81, 63, 90);
+    do Screen.drawRectangle(63, 81, 72, 90);
+
+
+
+    // A 1
+    do Screen.drawRectangle(117, 81, 126, 90);
+    do Screen.drawRectangle(126, 81, 135, 90);
+
+    // A 2
+    do Screen.drawRectangle(153, 81, 162, 90);
+    do Screen.drawRectangle(162, 81, 171, 90);
+
+    // C
+    do Screen.drawRectangle(180, 81, 189, 90);
+    do Screen.drawRectangle(189, 81, 198, 90);
+
+
+
+
+    // Figure
+    do Screen.drawRectangle(252, 81, 261, 90);
+
+    // M 1
+    do Screen.drawRectangle(279, 81, 288, 90);
+    do Screen.drawRectangle(288, 81, 297, 90);
+
+    // M 2  
+    do Screen.drawRectangle(324, 81, 333, 90);
+    do Screen.drawRectangle(333, 81, 342, 90);
+
+    // A 1
+    do Screen.drawRectangle(351, 81, 360, 90);
+    do Screen.drawRectangle(360, 81, 369, 90);
+
+    // A 2
+    do Screen.drawRectangle(387, 81, 396, 90);
+    do Screen.drawRectangle(396, 81, 405, 90);
+
+    // N 1
+    do Screen.drawRectangle(414, 81, 423, 90);
+    do Screen.drawRectangle(423, 81, 432, 90);
+
+    // N 2
+    do Screen.drawRectangle(450, 81, 459, 90);
+    do Screen.drawRectangle(459, 81, 468, 90);
+    do Screen.drawRectangle(468, 81, 477, 90);
+    do Screen.drawRectangle(477, 81, 486, 90);
+
+  //Line 9
+
+
+    //P
+    do Screen.drawRectangle(54, 90, 63, 99);
+    do Screen.drawRectangle(63, 90, 72, 99);
+
+
+    // A 1
+    do Screen.drawRectangle(117, 90, 126, 99);
+    do Screen.drawRectangle(126, 90, 135, 99);
+
+    // A 2
+    do Screen.drawRectangle(153, 90, 162, 99);
+    do Screen.drawRectangle(162, 90, 171, 99);
+
+    // C
+    do Screen.drawRectangle(180, 90, 189, 99);
+    do Screen.drawRectangle(189, 90, 198, 99);
+
+
+
+
+    // M 1
+    do Screen.drawRectangle(279, 90, 288, 99);
+    do Screen.drawRectangle(288, 90, 297, 99);
+
+    // M 2
+    do Screen.drawRectangle(324, 90, 333, 99);
+    do Screen.drawRectangle(333, 90, 342, 99);
+
+    // A 1
+    do Screen.drawRectangle(351, 90, 360, 99);
+    do Screen.drawRectangle(360, 90, 369, 99);
+
+    // A 2
+    do Screen.drawRectangle(387, 90, 396, 99);
+    do Screen.drawRectangle(396, 90, 405, 99);
+
+    // N 1
+    do Screen.drawRectangle(414, 90, 423, 99);
+    do Screen.drawRectangle(423, 90, 432, 99);
+
+    // N 2
+    do Screen.drawRectangle(459, 90, 468, 99);
+    do Screen.drawRectangle(468, 90, 477, 99);
+    do Screen.drawRectangle(477, 90, 486, 99);
+
+  //Line 10+
+
+
+    //P
+    do Screen.drawRectangle(54, 99, 63, 108);
+    do Screen.drawRectangle(63, 99, 72, 108);
+
+
+    // A 1
+    do Screen.drawRectangle(117, 99, 126, 108);
+    do Screen.drawRectangle(126, 99, 135, 108);
+
+    // A 2
+    do Screen.drawRectangle(153, 99, 162, 108);
+    do Screen.drawRectangle(162, 99, 171, 108);
+
+    // C 1
+    do Screen.drawRectangle(180, 99, 189, 108);
+    do Screen.drawRectangle(189, 99, 198, 108);
+
+    // C 2
+    do Screen.drawRectangle(225, 99, 234, 108);
+
+
+
+
+    // M 1
+    do Screen.drawRectangle(279, 99, 288, 108);
+    do Screen.drawRectangle(288, 99, 297, 108);
+
+    // M 2
+    do Screen.drawRectangle(324, 99, 333, 108);
+    do Screen.drawRectangle(333, 99, 342, 108);
+
+    // A 1
+    do Screen.drawRectangle(351, 99, 360, 108);
+    do Screen.drawRectangle(360, 99, 369, 108);
+
+    // A 2
+    do Screen.drawRectangle(387, 99, 396, 108);
+    do Screen.drawRectangle(396, 99, 405, 108);
+
+    // N 1
+    do Screen.drawRectangle(414, 99, 423, 108);
+    do Screen.drawRectangle(423, 99, 432, 108);
+
+    // N 2
+    do Screen.drawRectangle(468, 99, 477, 108);
+    do Screen.drawRectangle(477, 99, 486, 108);
+
+  //Line 11+
+
+
+    //P
+    do Screen.drawRectangle(54, 108, 63, 117);
+    do Screen.drawRectangle(63, 108, 72, 117);
+
+
+    // A 1
+    do Screen.drawRectangle(117, 108, 126, 117);
+    do Screen.drawRectangle(126, 108, 135, 117);
+
+    // A 2
+    do Screen.drawRectangle(153, 108, 162, 117);
+    do Screen.drawRectangle(162, 108, 171, 117);
+
+    // C
+    do Screen.drawRectangle(189, 108, 198, 117);
+    do Screen.drawRectangle(198, 108, 207, 117);
+    do Screen.drawRectangle(207, 108, 216, 117);
+    do Screen.drawRectangle(216, 108, 225, 117);
+    do Screen.drawRectangle(225, 108, 234, 117);
+
+
+
+
+    // M 1
+    do Screen.drawRectangle(279, 108, 288, 117);
+    do Screen.drawRectangle(288, 108, 297, 117);
+
+    // M 2
+    do Screen.drawRectangle(324, 108, 333, 117);
+    do Screen.drawRectangle(333, 108, 342, 117);
+
+    // A 1
+    do Screen.drawRectangle(351, 108, 360, 117);
+    do Screen.drawRectangle(360, 108, 369, 117);
+
+    // A 2
+    do Screen.drawRectangle(387, 108, 396, 117);
+    do Screen.drawRectangle(396, 108, 405, 117);
+
+    // N 1
+    do Screen.drawRectangle(414, 108, 423, 117);
+    do Screen.drawRectangle(423, 108, 432, 117);
+
+    // N 2
+    do Screen.drawRectangle(468, 108, 477, 117);
+    do Screen.drawRectangle(477, 108, 486, 117);
+
+  //Line 12
+
+
+    //P
+    do Screen.drawRectangle(45, 117, 54, 126);    
+    do Screen.drawRectangle(54, 117, 63, 126);
+    do Screen.drawRectangle(63, 117, 72, 126);
+    do Screen.drawRectangle(72, 117, 81, 126);
+
+    // A 1
+    do Screen.drawRectangle(117, 117, 126, 126);
+    do Screen.drawRectangle(126, 117, 135, 126);
+
+    // A 2
+    do Screen.drawRectangle(153, 117, 162, 126);
+    do Screen.drawRectangle(162, 117, 171, 126);
+
+    // C
+    do Screen.drawRectangle(198, 117, 207, 126);
+    do Screen.drawRectangle(207, 117, 216, 126);
+    do Screen.drawRectangle(216, 117, 225, 126);
+
+
+
+
+    // M 1
+    do Screen.drawRectangle(279, 117, 288, 126);
+    do Screen.drawRectangle(288, 117, 297, 126);
+
+    // M 2
+    do Screen.drawRectangle(324, 117, 333, 126);
+    do Screen.drawRectangle(333, 117, 342, 126);
+
+    // A 1
+    do Screen.drawRectangle(351, 117, 360, 126);
+    do Screen.drawRectangle(360, 117, 369, 126);
+
+    // A 2
+    do Screen.drawRectangle(387, 117, 396, 126);
+    do Screen.drawRectangle(396, 117, 405, 126);
+
+    // N 1
+    do Screen.drawRectangle(414, 117, 423, 126);
+    do Screen.drawRectangle(423, 117, 432, 126);
+
+    // N 2
+    do Screen.drawRectangle(468, 117, 477, 126);
+    do Screen.drawRectangle(477, 117, 486, 126);
+
+
+
+    // print text below title
+    do Output.moveCursor(14, 6); // row, column
+    do Output.printString("PIPE RESTREPO-KEVIN QUIROZ-JUAN MARTIN-DAVID BLANDON");
+    do Output.moveCursor(18, 20); // row, column
+    do Output.printString("PRESS ANY KEY TO START");
+    return;
+  }
+
+  method void dispose() {
+    do Memory.deAlloc(this);
+      return;
+  }
+}
