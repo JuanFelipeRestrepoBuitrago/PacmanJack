@@ -4,6 +4,8 @@
 # Build files
 bin/
 build/
+tools/
+.tools/
 
 # VM files
 *.vm
