@@ -1,5 +1,32 @@
 class Main {
     function void main() {
+        var Score score;
+        var int counterVal, randNum;
+
+        do Splash.show();
+
+        let counterVal = Splash.waitForKey();
+        do Screen.clearScreen();
+        do Output.moveCursor(0, 0);
+        do Output.printString("Counter Value: ");
+        do Output.printInt(counterVal);
+
+        // Initialize random with seed 42
+        do Random.setSeed(counterVal);
+
+        // Generate a random number between 0 and 9
+        let randNum = Random.nextInt(4);
+        do Output.moveCursor(2, 0);
+        do Output.printInt(randNum);
+        let randNum = Random.nextInt(4);
+        do Output.moveCursor(3, 0);
+        do Output.printInt(randNum);
+        let randNum = Random.nextInt(4);
+        do Output.moveCursor(4, 0);
+        do Output.printInt(randNum);
+        let randNum = Random.nextInt(4);
+        do Output.moveCursor(5, 0);
+        do Output.printInt(randNum);
         // var Pacman pacman, pacman2;
         // var int key;
 
@@ -18,8 +45,6 @@ class Main {
         // }
 
         // do pacman.dispose();
-
-        var Score score;
 
         let score = Score.new();
 
