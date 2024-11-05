@@ -1,0 +1,173 @@
+class Walls {
+   // Number of walls and array to store them
+   field int nWalls;
+   field Array walls;
+ 
+   // Constructor for Walls
+   constructor Walls new() {
+     let nWalls = 283;
+     do createWalls();
+     return this;
+   }
+ 
+   // Initialize the walls
+   method void init() {
+     do draw();
+     return;
+   }
+ 
+ 
+ method void createWalls() {
+   var int i;
+   let walls = Array.new(nWalls);
+   let i = 0;
+ 
+   let walls[i] = Wall.new(27, 9, 342, 18); 
+   let i = i + 1;
+   let walls[i] = Wall.new(27, 9, 36, 234);
+   let i = i + 1;
+   let walls[i] = Wall.new(333, 9, 342, 234); 
+   let i = i + 1;
+   let walls[i] = Wall.new(27, 225, 342, 234);
+   let i = i + 1;
+ 
+   let walls[i] = Wall.new(27, 108, 36, 126);  
+   let i = i + 1;
+   let walls[i] = Wall.new(333, 108, 342, 126); 
+ 
+ 
+   let walls[i] = Wall.new(54, 36, 81, 45); 
+   let i = i + 1;
+   let walls[i] = Wall.new(63, 45, 72, 81);
+   let i = i + 1;
+   
+   let walls[i] = Wall.new(117, 36, 144, 45); 
+   let i = i + 1;
+   let walls[i] = Wall.new(126, 45, 135, 72);  
+   let i = i + 1;
+ 
+   let walls[i] = Wall.new(180, 36, 207, 45);  
+   let i = i + 1;
+   let walls[i] = Wall.new(189, 45, 198, 81);    
+   let i = i + 1;
+ 
+   let walls[i] = Wall.new(243, 36, 270, 45);  
+   let i = i + 1;
+   let walls[i] = Wall.new(243, 45, 252, 72);  
+   let i = i + 1;
+ 
+   let walls[i] = Wall.new(288, 36, 315, 45);    
+   let i = i + 1;
+   let walls[i] = Wall.new(297, 45, 306, 81);   
+   let i = i + 1;
+   
+   let walls[i] = Wall.new(54, 108, 81, 117);   
+   let i = i + 1;
+   let walls[i] = Wall.new(63, 117, 72, 153);   
+   let i = i + 1;
+ 
+   let walls[i] = Wall.new(135, 108, 162, 117);
+   let i = i + 1;
+   let walls[i] = Wall.new(144, 117, 153, 153); 
+   let i = i + 1;
+ 
+ 
+   let walls[i] = Wall.new(207, 117, 216, 153);  
+   let i = i + 1;
+ 
+   let walls[i] = Wall.new(270, 108, 297, 117);  
+   let i = i + 1;
+   let walls[i] = Wall.new(288, 117, 297, 153);  
+   let i = i + 1;
+ 
+   let walls[i] = Wall.new(54, 180, 81, 189); 
+   let i = i + 1;
+   let walls[i] = Wall.new(72, 189, 81, 225); 
+   let i = i + 1;
+ 
+   let walls[i] = Wall.new(135, 180, 162, 189);  
+   let i = i + 1;
+   let walls[i] = Wall.new(144, 189, 153, 216);
+   let i = i + 1;
+ 
+   let walls[i] = Wall.new(198, 180, 225, 189);  
+   let i = i + 1;
+   let walls[i] = Wall.new(207, 189, 216, 216);  
+   let i = i + 1;
+ 
+   let walls[i] = Wall.new(288, 180, 315, 189); 
+   let i = i + 1;
+   let walls[i] = Wall.new(306, 189, 315, 225);  
+   let i = i + 1;
+ 
+   let walls[i] = Wall.new(90, 135, 117, 144);  
+   let i = i + 1;
+   let walls[i] = Wall.new(153, 135, 180, 144);  
+   let i = i + 1;
+   let walls[i] = Wall.new(207, 135, 234, 144); 
+   let i = i + 1;
+   let walls[i] = Wall.new(261, 135, 288, 144); 
+   let i = i + 1;
+ 
+   let walls[i] = Wall.new(63, 207, 72, 216);   
+   let i = i + 1;
+   let walls[i] = Wall.new(171, 207, 180, 216);  
+   let i = i + 1;
+   let walls[i] = Wall.new(279, 207, 288, 216);   
+   let i = i + 1;
+ 
+   while (i < nWalls) {
+       let walls[i] = Wall.new(0, 0, 0, 0); 
+       let i = i + 1;
+   }
+ 
+   return;
+ }
+ 
+ 
+    // Draw all walls in the array
+    method void draw() {
+     var Wall w;
+     var int i;
+     let i = 0;
+ 
+     while (i < nWalls) {
+       let w = walls[i];
+       do w.draw();
+       let i = i + 1;
+     }
+     return;
+   }
+ 
+   // Check if given corners overlap with any wall
+   method boolean checkOverlapping(int x1, int y1, int x2, int y2) {
+     var Wall w;
+     var int i;
+     let i = 0;
+ 
+     while (i < nWalls) {
+       let w = walls[i];
+       if (w.checkOverlapping(x1, y1, x2, y2)) {
+         return true;
+       }
+       let i = i + 1;
+     }
+     return false;
+   }
+ 
+   // Dispose of the walls array and clean up
+   method void dispose() {
+     var Wall w;
+     var int i;
+     let i = 0;
+ 
+     while (i < nWalls) {
+       let w = walls[i];
+       do w.dispose();
+       let i = i + 1;
+     }
+     do walls.dispose();
+     do Memory.deAlloc(this);
+     return;
+   }
+ }

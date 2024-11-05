@@ -1,0 +1,98 @@
+class Pellets {
+   // number of pellets
+   field int nPellets;
+   // collection of pellets
+   field Array pellets;
+   // grid of dots dimensions
+   field int cols;
+   field int rows;
+   // space between dots
+   field int spaceSize;
+   // number of captured dots
+   field int capturedCount;
+ 
+   constructor Pellets new() {
+     let cols = 17;
+     let rows = 12;
+     let spaceSize = 175;
+     let nPellets = cols * rows;
+     let pellets = Array.new(nPellets);
+     let capturedCount = 0;
+     do createPellets();
+     return this;
+   }
+ 
+   method void init() {
+     do draw();
+     return;
+   }
+ 
+   method void createPellets() {
+     var int x, y;
+     var int i;
+     var int row, col;
+     let i = 0;
+ 
+     while (i < nPellets) {
+       let row = i / cols;
+       let col = i - (row * cols);
+       let x = (spaceSize * col) / 10 + 44;
+       let y = (spaceSize * row) / 10 + 26;
+       let pellets[i] = Pellet.new(x, y);
+       let i = i + 1;
+     }
+     return;
+   }
+ 
+   method void draw() {
+     var int i;
+     var Pellet cur;
+     let i = 0;
+     while (i < nPellets) {
+       let cur = pellets[i];
+       do cur.draw();
+       let i = i + 1;
+     }
+     return;
+   }
+ 
+   method int getCapturedCount() {
+     return capturedCount;
+   }
+ 
+   method void setCollected(int x1, int y1, int x2, int y2, boolean collecting) {
+     var int i;
+     var Pellet cur;
+     let i = 0;
+     while (i < nPellets) {
+       let cur = pellets[i];
+       if (cur.checkOverlapping(x1, y1, x2, y2)) {
+         if (~(cur.isCollected())) {
+           if (collecting) {
+             do cur.setCollected();
+             let capturedCount = capturedCount + 1;
+           }
+           do cur.draw();
+         }
+         return;
+       }
+       let i = i + 1;
+     }
+     return;
+   }
+ 
+   method void dispose() {
+     var Pellet b;
+     var int i;
+     let i = 0;
+     while (i < nPellets) {
+       let b = pellets[i];
+       do b.dispose();
+       let i = i + 1;
+     }
+     do pellets.dispose();
+     do Memory.deAlloc(this);
+     return;
+   }
+ }
+ 
