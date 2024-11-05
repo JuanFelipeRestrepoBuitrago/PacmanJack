@@ -2,16 +2,237 @@ class Pacman {
     field int x, y, size;
     field int direction; /** 0 = right, 1 = up, 2 = left, 3 = down */
     field int speed;
-    field boolean captured;
+    field boolean captured, mouthClosed;
 
     constructor Pacman new() {
-        let x = 165;
-        let y = 165;
+        let x = 1;
+        let y = 160;
         let size = 12;
-        let direction = 1;
-        let speed = 1;
+        let direction = 2;
+        let speed = 3;
         let captured = false;
+        let mouthClosed = false;
 
         return this;
+    }
+
+    method void draw() {
+        var int radius;
+        
+        // let radius = Math.divide(size, 2);
+        let radius = 5;
+
+        do Screen.setColor(true);
+
+        do Screen.drawCircle(x + radius, y + radius, radius);
+
+        do Screen.setColor(false);
+
+        // Draw eyes
+        if (direction = 0) { // Right
+            do Screen.drawRectangle(x + radius + 1, y + radius - 4, x + radius + 2, y + radius - 3);
+        }
+        if (direction = 1) { // Up
+            do Screen.drawRectangle(x + radius - 3, y + radius - 1, x + radius - 2, y + radius);
+        }
+        if (direction = 2) { // Left
+            do Screen.drawRectangle(x + radius - 1, y + radius - 4, x + radius, y + radius - 3);
+        } 
+        if (direction = 3) { // Down
+            do Screen.drawRectangle(x + radius + 2, y + radius, x + radius + 3, y + radius + 1);
+        }
+
+        // Draw mouth based on direction
+        if (~mouthClosed) {
+            if (direction = 0) { // Right
+                do Screen.drawRectangle(x + radius + 2, y + radius, x + radius + 3, y + radius + 1);
+                do Screen.drawRectangle(x + radius + 3, y + radius - 1, x + radius + 4, y + radius + 2);
+                do Screen.drawRectangle(x + radius + 4, y + radius - 2, x + radius + 6, y + radius + 3);
+            } 
+            if (direction = 1) { // Up            
+                do Screen.drawRectangle(x + radius, y + radius - 3, x + radius + 1, y + radius - 2);
+                do Screen.drawRectangle(x + radius - 1, y + radius - 4, x + radius + 2, y + radius - 3);
+                do Screen.drawRectangle(x + radius - 2, y + radius - 6, x + radius + 3, y + radius - 4);
+            } 
+            if (direction = 2) { // Left
+                do Screen.drawRectangle(x + radius - 2, y + radius, x + radius - 1, y + radius + 1);
+                do Screen.drawRectangle(x + radius - 3, y + radius - 1, x + radius - 2, y + radius + 2);
+                do Screen.drawRectangle(x + radius - 6, y + radius - 2, x + radius - 4, y + radius + 3);
+            } 
+            if (direction = 3) { // Down
+                do Screen.drawRectangle(x + radius, y + radius + 2, x + radius + 1, y + radius + 3);
+                do Screen.drawRectangle(x + radius - 1, y + radius + 3, x + radius + 2, y + radius + 4);
+                do Screen.drawRectangle(x + radius - 2, y + radius + 4, x + radius + 3, y + radius + 6);
+            }
+        }
+
+        return;
+    }
+
+    method void erase() {
+        do Screen.setColor(false);
+
+        do Screen.drawRectangle(x, y, x + size, y + size);
+
+        return;
+    }
+
+    method void init(){
+        do draw();
+        return;
+    }
+
+    method void capture(){
+        let captured = true;
+        return;
+    }
+
+    method void handleKey(int key){
+        if (key = 130) {
+            // Left Arrow
+            do setDirection(2);
+        }
+        if (key = 131){
+            // Up Arrow
+            do setDirection(1);
+        }
+        if (key = 132){
+            // Right Arrow
+            do setDirection(0);
+        }
+        if (key = 133){
+            // Down Arrow
+            do setDirection(3); 
+        }
+
+        return;
+    }
+
+    method void move(){
+        var boolean canMove;
+        var int newX, newY;
+    
+        let canMove = true;
+
+        if (canMove) {
+            do erase();
+
+            let x = getNextX();
+            let y = getNextY();
+
+            do draw();
+            do toggleMouth();
+            do Sys.wait(400);
+        }
+
+        return;
+    }
+
+    method int getNextX(){
+        var int nextX;
+        let nextX = x;
+        if (direction = 0) {
+            let nextX = x + speed;
+        }
+        if (direction = 2) {
+            let nextX = x - speed;
+        }
+
+        if (nextX < 1) {
+            let nextX = 496;
+        }
+        if (nextX > 496) {
+            let nextX = 1;
+        }
+
+        return nextX;
+    }
+
+    method int getNextY(){
+        var int nextY;
+        let nextY = y;
+        if (direction = 1) {
+            let nextY = y - speed;
+        }
+        if (direction = 3) {
+            let nextY = y + speed;
+        }
+
+        if (nextY < 1) {
+            let nextY = 240;
+        }
+        if (nextY > 240) {
+            let nextY = 1;
+        }
+        return nextY;
+    }
+
+    method boolean checkOverlapping(int x1, int y1, int x2, int y2){
+        return (x1 < (x + size)) & (x2 > (x - 1)) & (y1 < (y + size)) & (y2 > (y - 1)); 
+    }
+
+    // Getters and setters
+    method void setX(int newX) {
+        let x = newX;
+        return;
+    }
+
+    method void setY(int newY) {
+        let y = newY;
+        return;
+    }
+
+    method void setSize(int newSize) {
+        let size = newSize;
+        return;
+    }
+
+    method void setDirection(int newDirection) {
+        let direction = newDirection;
+        return;
+    }
+
+    method void setSpeed(int newSpeed) {
+        let speed = newSpeed;
+        return;
+    }
+
+    method void setCaptured(boolean newCaptured) {
+        let captured = newCaptured;
+        return;
+    }
+
+    method int getX() {
+        return x;
+    }
+
+    method int getY() {
+        return y;
+    }
+
+    method int getSize() {
+        return size;
+    }
+
+    method int getDirection() {
+        return direction;
+    }
+
+    method int getSpeed() {
+        return speed;
+    }
+
+    method boolean getCaptured() {
+        return captured;
+    }
+
+    method void toggleMouth() {
+        let mouthClosed = ~mouthClosed;
+        return;
+    }
+
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
     }
 }

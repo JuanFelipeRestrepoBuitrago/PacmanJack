@@ -645,6 +645,24 @@ function void show() {
     return;
   }
 
+  function int waitForKey() {
+    var int key;
+    var int counter;
+    let key = 0;
+    let counter = 0;
+
+    while (~key) {
+      let counter = counter + 1;
+
+      if (counter = 32767) {
+        let counter = 0;
+      }
+
+      let key = Keyboard.keyPressed();
+    }
+    return counter;
+  }
+
   method void dispose() {
     do Memory.deAlloc(this);
       return;
