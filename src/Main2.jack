@@ -1,0 +1,11 @@
+class Main2 {
+
+
+  function void main() {
+    
+    var Walls walls;
+    let walls = Walls.new(); // Inicialización de la instancia walls
+    do walls.init();         // Llamada al método init para dibujar las paredes
+    return;
+  }
+}

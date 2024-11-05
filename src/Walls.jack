@@ -1,0 +1,42 @@
+class Walls {
+  // number of walls
+  field int nWalls;
+  // collection of walls
+  field Array walls;
+
+  constructor Walls new() {
+    let nWalls = 3;
+    do createWalls();
+    return this;
+  }
+
+  method void init() {
+    do draw();
+    return;
+  }
+
+  method void createWalls() {
+    var int i, bx;
+    
+
+    let walls[0] = Wall.new(27, 9, 36, 18);
+    let walls[1] = Wall.new(36, 9, 45, 18);
+    
+
+    return;
+  }
+
+  // draw all walls
+  method void draw() {
+    var Wall w;
+    var int i;
+    let i = 0;
+    while (i < nWalls) {
+      let w = walls[i];
+      do w.draw();
+      let i = i + 1;
+    }
+    return;
+  }
+
+}

@@ -1,0 +1,21 @@
+class Wall {
+  // corners of wall
+  field int leftX, topY, rightX, bottomY;
+
+  // construct wall
+  constructor Wall new(int x1, int y1, int x2, int y2) {
+    let leftX = x1;
+    let topY = y1;
+    let rightX = x2;
+    let bottomY = y2;
+    return this;
+  }
+
+  // draw wall rectangle
+  method void draw() {
+    do Screen.setColor(true);
+    do Screen.drawRectangle(leftX, topY, rightX, bottomY);
+    return;
+  }
+
+}
