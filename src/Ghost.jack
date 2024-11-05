@@ -110,7 +110,7 @@ class Ghost {
    
    method void setNextDirRandom() {
      var int i;
-     let i = Random.randRange(150);
+     let i = Random.nextInt(150);
      if (i < 25) {
        let dir = 1;
        return;

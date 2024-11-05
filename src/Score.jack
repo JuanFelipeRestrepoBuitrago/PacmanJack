@@ -26,7 +26,7 @@ class Score {
     method void calculate() {
         // calculate new score
         var int newScore;
-        // let newScore = pellets.getCapturedCount() * 10;
+        // let newScore = cookies.getCapturedCount() * 10;
         let newScore = 1 * 10;
         if (~(newScore = score)) {
             let score = newScore;

@@ -1,0 +1,51 @@
+// File: Random.jack
+
+class Random {
+    static int seed;
+
+    /** Function to set the seed for the random number generator. */
+    function void setSeed(int newSeed) {
+        let seed = newSeed;
+        return;
+    }
+
+    /** Helper method to emulate modulo operation x % y */
+    function int mod(int x, int y) {
+        while (~(x < y)) {
+            let x = x - y;
+        }
+        return x;
+    }
+
+    /** Generates the next random integer up to max (exclusive). */
+    function int nextInt(int max) {
+        // Adjusted constants for LCG within Jack's 16-bit integer limit.
+        var int a, c, m;
+        let a = 75;       // Multiplier
+        let c = 74;       // Increment
+        let m = 32767;    // Modulus (within 16-bit range)
+
+        // Generate next seed using LCG formula with small steps to avoid overflow
+        let seed = a * seed;
+        let seed = seed + c;
+        let seed = Random.mod(seed, m);
+
+        // Ensure the seed is non-negative
+        if (seed < 0) {
+            let seed = -seed;
+        }
+
+        // Return a number in range 0 <= result < max
+        return Random.mod(seed, max);
+    }
+
+    /** Generates a random integer within a specific range [min, max). */
+    function int nextRange(int min, int max) {
+        var int range, rand;
+        let range = max - min;
+
+        // Get a random integer from 0 to range-1, then add min to shift the range.
+        let rand = Random.nextInt(range);
+        return rand + min;
+    }
+}
