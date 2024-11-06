@@ -43,6 +43,16 @@ To run the project, you must have the Jack compiler installed. You can download 
 
 3. Load the .vm inside the ./bin folder to the VMEmulator and run the program.
 
+## Evidence for Final Exam
+
+### Main Menu
+
+![Main Menu](./img/MainMenu.png)
+
+### Board, Score, Pacman, Ghost and Cookies
+
+![Board](./img/BoardPacmanGhostCookiesScore.png)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

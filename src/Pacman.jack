@@ -5,10 +5,10 @@ class Pacman {
     field boolean captured, mouthClosed;
 
     constructor Pacman new() {
-        let x = 1;
-        let y = 160;
+        let x = 165;
+        let y = 155;
         let size = 12;
-        let direction = 2;
+        let direction = 1;
         let speed = 3;
         let captured = false;
         let mouthClosed = false;
