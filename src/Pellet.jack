@@ -1,0 +1,51 @@
+class Pellet {
+   field int x, y;
+   field boolean collected;
+   field int size;
+ 
+   constructor Pellet new(int xi, int yi) {
+     let x = xi;
+     let y = yi;
+     let size = 2; 
+     let collected = false;
+     return this;
+   }
+ 
+   method void draw() {
+     if (~collected) {
+\       do Screen.setColor(true);
+       do Screen.drawCircle(x, y, size); 
+ 
+       do Screen.setColor(false); 
+       do Screen.drawPixel(x + 1, y + 1);
+       do Screen.drawPixel(x - 1, y - 2);
+       do Screen.drawPixel(x + 2, y - 1);
+       do Screen.drawPixel(x - 2, y + 2);
+       do Screen.drawPixel(x, y - 1);
+     }
+     return;
+   }
+ 
+   method void setCollected() {
+     let collected = true;
+     return;
+   }
+ 
+   method boolean isCollected() {
+     return collected;
+   }
+ 
+   method boolean checkOverlapping(int x1, int y1, int x2, int y2) {
+     return (
+       (x1 < (x + size)) & (x2 > (x - 1))
+     ) & (
+       (y1 < (y + size)) & (y2 > (y - 1))
+     );
+   }
+ 
+   method void dispose() {
+     do Memory.deAlloc(this);
+     return;
+   }
+ }
+ 

@@ -1,0 +1,36 @@
+class Wall {
+   // Corners of the wall
+   field int leftX, topY, rightX, bottomY;
+ 
+   // Constructor for Wall
+   constructor Wall new(int x1, int y1, int x2, int y2) { 
+     let leftX = x1; // starting x
+     let topY = y1; // starting y
+     let rightX = x2; // ending x
+     let bottomY = y2; // ending y
+     return this;
+   }
+ 
+   // Draw the wall as a rectangle on the screen
+   method void draw() {
+     do Screen.setColor(true);
+     do Screen.drawRectangle(leftX, topY, rightX, bottomY);
+     return;
+   }
+ 
+   // Check if an object is overlapping the wall given its coordinates
+   method boolean checkOverlapping(int x1, int y1, int x2, int y2) {
+     return (
+       (x1 < (rightX + 1)) & (x2 > (leftX - 1)) // Check horizontal overlap
+     ) & (
+       (y1 < (bottomY + 1)) & (y2 > (topY - 1)) // Check vertical overlap
+     );
+   }
+ 
+   // Dispose of the wall instance
+   method void dispose() {
+     do Memory.deAlloc(this);
+     return;
+   }
+ }
+ 
