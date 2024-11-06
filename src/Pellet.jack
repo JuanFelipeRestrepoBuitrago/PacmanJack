@@ -13,7 +13,7 @@ class Pellet {
  
    method void draw() {
      if (~collected) {
-\       do Screen.setColor(true);
+       do Screen.setColor(true);
        do Screen.drawCircle(x, y, size); 
  
        do Screen.setColor(false); 
