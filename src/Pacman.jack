@@ -3,15 +3,20 @@ class Pacman {
     field int direction; /** 0 = right, 1 = up, 2 = left, 3 = down */
     field int speed;
     field boolean captured, mouthClosed;
+    field Pellets pellets;
+    field Walls walls;
 
-    constructor Pacman new() {
+    constructor Pacman new(Pellets p, Walls w) {
         let x = 165;
         let y = 155;
         let size = 12;
-        let direction = 1;
+        let direction = 0;
         let speed = 3;
         let captured = false;
         let mouthClosed = false;
+
+        let pellets = p;
+        let walls = w;
 
         return this;
     }
@@ -19,8 +24,8 @@ class Pacman {
     method void draw() {
         var int radius;
         
-        // let radius = Math.divide(size, 2);
-        let radius = 5;
+        let radius = Math.divide(size, 2);
+        // let radius = 5;
 
         do Screen.setColor(true);
 
@@ -112,7 +117,7 @@ class Pacman {
         var boolean canMove;
         var int newX, newY;
     
-        let canMove = true;
+        let canMove = canAdvance();
 
         if (canMove) {
             do erase();
@@ -122,10 +127,25 @@ class Pacman {
 
             do draw();
             do toggleMouth();
-            do Sys.wait(400);
+            do capturePellets();
         }
 
         return;
+    }
+
+    method boolean canAdvance(){
+        var int nextX, nextY;
+        let nextX = getNextX();
+        let nextY = getNextY();
+        if (willCollideWithWalls(nextX, nextY)) {
+            return false;
+        }
+
+        if ((x = nextX) & (y = nextY)) {
+            return false;
+        }
+
+        return true;
     }
 
     method int getNextX(){
@@ -169,6 +189,18 @@ class Pacman {
 
     method boolean checkOverlapping(int x1, int y1, int x2, int y2){
         return (x1 < (x + size)) & (x2 > (x - 1)) & (y1 < (y + size)) & (y2 > (y - 1)); 
+    }
+
+    method void capturePellets(){
+        do pellets.setCollected(x, y, x + size, y + size, true);
+        return;
+    }
+
+    method boolean willCollideWithWalls(int nextX, int nextY) {
+        var int nextEndX, nextEndY;
+        let nextEndX = nextX + size;
+        let nextEndY = nextY + size;
+        return walls.checkOverlapping(nextX, nextY, nextEndX, nextEndY);
     }
 
     // Getters and setters
