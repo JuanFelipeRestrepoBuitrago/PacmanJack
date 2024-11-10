@@ -12,9 +12,9 @@ class Pellets {
    field int capturedCount;
  
    constructor Pellets new() {
-     let cols = 17;
-     let rows = 12;
-     let spaceSize = 175;
+     let cols = 9;
+     let rows = 6;
+     let spaceSize = 355;
      let nPellets = cols * rows;
      let pellets = Array.new(nPellets);
      let capturedCount = 0;
