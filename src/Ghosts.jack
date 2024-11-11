@@ -1,0 +1,63 @@
+class Ghosts {
+    field Array ghosts;
+    field int nGhosts;
+    field Pacman pacman;
+    field Walls walls;
+    field Pellets pellets;
+
+    constructor Ghosts new(Pacman pm, Walls w, Pellets p) {
+        let nGhosts = 4;
+        let walls = w;
+        let pacman = pm;
+        let pellets = p;
+        let ghosts = Array.new(nGhosts);
+        do createGhosts();
+        return this;
+    }
+
+    method void createGhosts() {
+        let ghosts[0] = Ghost.new(182, 117, pacman, walls, pellets);
+        let ghosts[1] = Ghost.new(182, 117, pacman, walls, pellets);
+        let ghosts[2] = Ghost.new(182, 117, pacman, walls, pellets);
+        let ghosts[3] = Ghost.new(182, 117, pacman, walls, pellets);
+        return;
+    }
+
+    method void init() {
+        var int i;
+        var Ghost cur;
+        let i = 0;
+        while (i < nGhosts) {
+            let cur = ghosts[i];
+            do cur.init();
+            let i = i + 1;
+        }
+        return;
+    }
+
+    method void next() {
+        var int i;
+        var Ghost cur;
+        let i = 0;
+        while (i < nGhosts) {
+            let cur = ghosts[i];
+            do cur.next();
+            let i = i + 1;
+        }
+        return;
+    }
+
+    method void dispose() {
+        var Ghost b;
+	    var int i;
+        let i = 0;
+        while (i < 4) {
+            let b = ghosts[i];
+            do b.dispose();
+            let i = i + 1;
+        }
+	    do ghosts.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+}

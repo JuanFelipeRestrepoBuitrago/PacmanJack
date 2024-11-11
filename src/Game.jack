@@ -1,11 +1,10 @@
 class Game {
   // Fields
   field Score score;
-  field PacMan pacman;
+  field Pacman pacman;
   field Pellets pellets;
   field Walls walls;
   field Ghosts ghosts;
-  field Labels labels;
 
   // Constructor
   constructor Game new() {
@@ -20,7 +19,6 @@ class Game {
     do pellets.init();
     do score.init();
     do ghosts.init();
-    do labels.init();
     return;
   }
 
@@ -29,7 +27,7 @@ class Game {
     var int key;
 
     // Check if game is over
-    if (pacman.getIsCaptured()) {
+    if (pacman.getCaptured()) {
       do displayGameOver();
       // Wait for SPACE key press to restart
       while (true) {
@@ -42,9 +40,9 @@ class Game {
     }
 
     // Update game objects
-    do pacman.next();
+    do pacman.move();
     do ghosts.next();
-    do score.next();
+    do score.calculate();
     return;
   }
 
@@ -71,10 +69,9 @@ class Game {
   method void createSprites() {
     let walls = Walls.new();
     let pellets = Pellets.new();
-    let pacman = PacMan.new(pellets, walls);
+    let pacman = Pacman.new(pellets, walls);
     let score = Score.new(pellets);
     let ghosts = Ghosts.new(pacman, walls, pellets);
-    let labels = Labels.new();
     return;
   }
 
@@ -85,7 +82,6 @@ class Game {
     do pacman.dispose();
     do score.dispose();
     do ghosts.dispose();
-    do labels.dispose();
     return;
   }
 
