@@ -15,8 +15,8 @@ class Game {
   // Initialize all game components
   method void init() {
     do pacman.init();
-    do walls.init();
     do pellets.init();
+    do walls.init();
     do score.init();
     do ghosts.init();
     return;

@@ -23,6 +23,11 @@ class Pellet {
        do Screen.drawPixel(x - 2, y + 2);
        do Screen.drawPixel(x, y - 1);
      }
+
+     if (collected) {
+       do Screen.setColor(false);
+       do Screen.drawCircle(x, y, size);
+     }
      return;
    }
  
