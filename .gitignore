@@ -9,3 +9,6 @@ tools/
 
 # VM files
 *.vm
+
+# Mac files
+.DS_Store
