@@ -10,11 +10,11 @@ class Ghost {
    // reference to walls collection
    field Walls walls;
    // reference to pac-man
-   field PacMan pacman;
+   field Pacman pacman;
    // reference to pellets collection
    field Pellets pellets;
  
-   constructor Ghost new(int xi, int yi, PacMan pm, Walls w, Pellets p) {
+   constructor Ghost new(int xi, int yi, Pacman pm, Walls w, Pellets p) {
      let size = 12;
      let speed = 2;
      let x = xi; // starting x

@@ -4,16 +4,11 @@ class Score {
     // highest score
     field int highest;
     // cookies
-    field Cookies cookies;
+    field Pellets pellets;
 
-    // constructor Score new(Cookies p) {
-    //     let score = 0; // start at 0 points
-    //     let cookies = p;
-    //     return this;
-    // }
-
-    constructor Score new() {
+    constructor Score new(Pellets p) {
         let score = 0; // start at 0 points
+        let pellets = p;
         return this;
     }
 
@@ -26,8 +21,7 @@ class Score {
     method void calculate() {
         // calculate new score
         var int newScore;
-        // let newScore = cookies.getCapturedCount() * 10;
-        let newScore = 1 * 10;
+        let newScore = pellets.getCapturedCount() * 10;
         if (~(newScore = score)) {
             let score = newScore;
             // update highest score

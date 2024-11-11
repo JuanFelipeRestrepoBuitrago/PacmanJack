@@ -1,35 +1,26 @@
 class Main {
     function void main() {
-        // Ghost
-        var Ghost ghost;
-        var Pacman pacman;
-        var Pellets pellets;
-        var Walls walls;
-        var Score score;
-        var int counterVal;
+        var int key, counterVal;
+        var Game game;
 
         do Splash.show();
 
         let counterVal = Splash.waitForKey();
         do Screen.clearScreen();
+        do Random.setSeed(counterVal);
 
-        let pellets = Pellets.new();
-        let walls = Walls.new();
-        let pacman = Pacman.new();
+        let game = Game.new();
+        do game.init();
 
-        let ghost = Ghost.new(162, 117, pacman, walls, pellets);
-        do pellets.init();
-        do ghost.init();
-        do pacman.init();
-        do walls.init();
+        while (true) {
+            do game.next();
 
-        let score = Score.new();
+            let key = Keyboard.keyPressed();
+            if (~(key = 0)) {
+                do game.handleKey(key);
+            }
+        }
 
-        do score.init();
-
-        do Sys.wait(1000);
-
-        do score.calculate();
 
         return;
     }
