@@ -1,6 +1,7 @@
 class Ghost {
    // current position
    field int x, y;
+   field int prevX, prevY;
    // size
    field int size;
    // direction 1=up, 2=down, 3=left, 4=right
@@ -71,6 +72,10 @@ class Ghost {
      if ((x = nextX) & (y = nextY)) {
        return false;
      }
+
+     let prevX = x;
+     let prevY = y;
+
      let x = nextX;
      let y = nextY;
      return true;
@@ -190,7 +195,9 @@ class Ghost {
      do Screen.drawRectangle(x + 3, y + 10, x + 4, y + 11);
      do Screen.drawRectangle(x + 7, y + 10, x + 8, y + 11); 
      do Screen.drawRectangle(x + 9, y + 9, x + 10, y + 10); 
- 
+  
+
+     do pellets.setCollected(prevX, prevY, prevX + size, prevY + size, false);
      return;
    }
 
