@@ -4,6 +4,11 @@
 # Build files
 bin/
 build/
+tools/
+.tools/
 
 # VM files
 *.vm
+
+# Mac files
+.DS_Store

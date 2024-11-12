@@ -10,6 +10,7 @@ function void show() {
 
   // The splash has 12, each one with cubes 9x9
 
+  
   //Line 1
 
     //P
@@ -642,6 +643,24 @@ function void show() {
     do Output.moveCursor(18, 20); // row, column
     do Output.printString("PRESS ANY KEY TO START");
     return;
+  }
+
+  function int waitForKey() {
+    var int key;
+    var int counter;
+    let key = 0;
+    let counter = 0;
+
+    while (~key) {
+      let counter = counter + 1;
+
+      if (counter = 32767) {
+        let counter = 0;
+      }
+
+      let key = Keyboard.keyPressed();
+    }
+    return counter;
   }
 
   method void dispose() {
