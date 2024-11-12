@@ -1,0 +1,105 @@
+class Game {
+  // Fields
+  field Score score;
+  field Pacman pacman;
+  field Pellets pellets;
+  field Walls walls;
+  field Ghosts ghosts;
+
+  // Constructor
+  constructor Game new() {
+    do createSprites();
+    return this;
+  }
+
+  // Initialize all game components
+  method void init() {
+    do pacman.init();
+    do pellets.init();
+    do walls.init();
+    do score.init();
+    do ghosts.init();
+    return;
+  }
+
+  // Main game loop logic
+  method void next() {
+    var int key;
+
+    // Check if game is over
+    if (pacman.getCaptured()) {
+      do displayGameOver();
+      // Wait for SPACE key press to restart
+      while (true) {
+        let key = Keyboard.keyPressed();
+        if (key = 32) {
+          do newGame();
+          return;
+        }
+      }
+    }
+
+    // Update game objects
+    do pacman.move();
+    do ghosts.next();
+    do score.calculate();
+    return;
+  }
+
+  // Handle key input for game actions
+  method void handleKey(int key) {
+    if (key = 32) { // SPACE key to reset
+      do newGame();
+      return;
+    }
+    do pacman.handleKey(key); // Pacman movement
+    return;
+  }
+
+  // Start a new game by resetting the game state
+  method void newGame() {
+    do disposeSprites();
+    do Screen.clearScreen();
+    do createSprites();
+    do init();
+    return;
+  }
+
+  // Create and initialize all game components
+  method void createSprites() {
+    let walls = Walls.new();
+    let pellets = Pellets.new();
+    let pacman = Pacman.new(pellets, walls);
+    let score = Score.new(pellets);
+    let ghosts = Ghosts.new(pacman, walls, pellets);
+    return;
+  }
+
+  // Clean up game components
+  method void disposeSprites() {
+    do walls.dispose();
+    do pellets.dispose();
+    do pacman.dispose();
+    do score.dispose();
+    do ghosts.dispose();
+    return;
+  }
+
+  // Display Game Over screen
+  method void displayGameOver() {
+    do Output.moveCursor(10, 46);
+    do Output.printString("GAME OVER");
+    do Output.moveCursor(13, 46);
+    do Output.printString("INSERT COIN");
+    do Output.moveCursor(14, 46);
+    do Output.printString("- PRESS SPACE");
+    return;
+  }
+
+  // Free memory and dispose the game instance
+  method void dispose() {
+    do disposeSprites();
+    do Memory.deAlloc(this);
+    return;
+  }
+}
