@@ -42,6 +42,8 @@ class Game {
     // Update game objects
     do pacman.move();
     do ghosts.next();
+    do pellets.draw();
+    do walls.draw();
     do score.calculate();
     return;
   }
