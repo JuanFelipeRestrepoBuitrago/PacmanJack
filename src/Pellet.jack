@@ -6,7 +6,7 @@ class Pellet {
    constructor Pellet new(int xi, int yi) {
      let x = xi;
      let y = yi;
-     let size = 2; 
+     let size = 3; 
      let collected = false;
      return this;
    }
@@ -23,6 +23,12 @@ class Pellet {
        do Screen.drawPixel(x - 2, y + 2);
        do Screen.drawPixel(x, y - 1);
      }
+
+     if (collected) {
+       do Screen.setColor(false);
+       do Screen.drawCircle(x, y, size);
+     }
+     
 
      return;
    }
