@@ -53,6 +53,11 @@ To run the project, you must have the Jack compiler installed. You can download 
 
 ![Board](./img/BoardPacmanGhostCookiesScore.png)
 
+### Video
+
+https://github.com/user-attachments/assets/520353de-5d77-44b0-9641-233363580bd1
+
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
